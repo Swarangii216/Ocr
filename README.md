@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ScanPlus
 
 ## What is ScanPlus?
@@ -93,3 +94,6 @@ python3 app.py
 
 ## License
 This project is licensed under the [MIT License](https://github.com/Gupta-Aryaman/scanPlus/blob/main/LICENSE).
+=======
+# Ocr
+>>>>>>> e9158ed25e54fd8cc4ef08016d57d2dec79b237f
