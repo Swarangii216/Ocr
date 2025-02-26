@@ -59,15 +59,15 @@ def send_mail(message, mail_id):
 
 @app.route("/", methods = ["GET"])
 def home_page():
-    return render_template("home.html")
+    return render_template("./home.html")
 
 @app.route("/about", methods = ["GET"])
 def about():
-    return render_template("about.html")
+    return render_template("./about.html")
 
 @app.route("/contact", methods = ["GET"])
 def contact():
-    return render_template("contact.html")
+    return render_template("./contact.html")
 
 @app.route("/login", methods = ["POST", "GET"])
 def login():
@@ -90,7 +90,7 @@ def login():
 
     else:
         status = request.args.get('status')
-        return render_template("login.html", status=status)
+        return render_template("./login.html", status=status)
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
@@ -110,7 +110,7 @@ def signup():
     else:
         status = request.args.get('status')
         print(status)
-        return render_template("signup.html", status=status)
+        return render_template("./signup.html", status=status)
     
 @app.route("/scan", methods = ["GET", "POST"])
 def scan():
@@ -123,7 +123,7 @@ def scan():
         data = {'path': os.path.join(app.config['UPLOAD_FOLDER_SCAN'], pic_name)}
 
         response = requests.post(
-            api_url + '/scan',
+            api_url + './scan',
             data
             ).json()
         
@@ -161,9 +161,9 @@ def scan():
             name = response['Name'][0]
 
 
-        return render_template("scan_result.html",name = name, medicine = medicines_list, output=response, pic = pic_name)
+        return render_template("./scan_result.html",name = name, medicine = medicines_list, output=response, pic = pic_name)
     else:
-        return render_template("scan.html")
+        return render_template("./scan.html")
     
 @app.route("/dashboard", methods = ["GET", "POST"])
 def dashboard():
@@ -188,14 +188,14 @@ def dashboard():
             data = ast.literal_eval(response.text)
             # print(response.text)
             name = data['name']
-            return render_template("dashboard.html", name = name)
+            return render_template("./dashboard.html", name = name)
         else:
             return "Invalid Token"
         
 @app.route("/dashboard/upload", methods = ["GET", "POST"])
 def dashboard_upload():
     if request.method=="GET":
-        return render_template("scan_at_dashboard.html")
+        return render_template("./scan_at_dashboard.html")
     else:
         image = request.files['prescription']
 
